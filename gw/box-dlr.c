@@ -306,7 +306,7 @@ static void add_true(const Octstr *smsc, const Octstr *ts, Msg *msg)
     char uuidbuf[UUID_STR_LEN + 1];
     Octstr *id;
     uuid_unparse(msg->sms.id, uuidbuf);
-    id = octstr_create_from_data(uuidbuf, UUID_STR_LEN + 1);
+    id = octstr_create_from_data(uuidbuf, UUID_STR_LEN); // should use octstr_create(uuidbuf);
     dlr->id = octstr_duplicate(id);
 
     debug("opensmppbox", 0, "DLR[%s]: Adding DLR smsc=%s, ts=%s, src=%s, dst=%s, mask=%d, boxc=%s, id=%s",
